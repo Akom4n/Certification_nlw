@@ -1,8 +1,10 @@
 package com.den.certification_nlw.entities;
 
 import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +23,9 @@ public class StudentEntity {
 	@Column(unique = true, nullable = false)
 	private String email;
 
-	@OneToMany
+	@OneToMany(mappedBy = "studentEntity")
 	private List<CertificationStudentEntity> certificationStudentEntity;
+
+	@Timestamp
+	private LocalDateTime createdAt;
 }
